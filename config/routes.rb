@@ -1,4 +1,13 @@
 PlatformdirectoryCom::Application.routes.draw do
+
+  resources :platforms
+
+  resources :countries
+
+  resources :statuses
+
+  resources :providers
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 

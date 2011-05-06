@@ -1,0 +1,21 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  name: MyString
+  slug: MyString
+  description: MyText
+  on_ec2: false
+  status: 
+  platform: 
+  country: 
+  status: 
+
+two:
+  name: MyString
+  slug: MyString
+  description: MyText
+  on_ec2: false
+  status: 
+  platform: 
+  country: 
+  status: 
