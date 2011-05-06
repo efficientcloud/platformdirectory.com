@@ -21,10 +21,9 @@
     <td><%= provider.slug %></td>
     <td><%= provider.description %></td>
     <td><%= provider.on_ec2 %></td>
-    <td><%= provider.status %></td>
-    <td><%= provider.platform %></td>
-    <td><%= provider.country %></td>
-    <td><%= provider.status %></td>
+    <td><%= provider.status and provider.status.name %></td>
+    <td><%= (provider.platforms.map {|p| p.name }).join ',' %></td>
+    <td><%= (provider.country.map {|c| c.name }).join ',' %></td>
     <td><%= link_to 'Show', provider %></td>
     <td><%= link_to 'Edit', edit_provider_path(provider) %></td>
     <td><%= link_to 'Destroy', provider, :confirm => 'Are you sure?', :method => :delete %></td>

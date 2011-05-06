@@ -29,7 +29,11 @@
   </div>
   <div class="field">
     <%= f.label :platforms %><br />
-    <%= select(:provider, :platforms, Platform.all.collect {|s| [s.name, s.slug] }, {}, {:multiple => true}) %>
+    <%= select(:provider, :platforms, Platform.all.collect {|s| [s.name, s.slug] }, {:selected => @provider.platforms.map {|p| p.slug } }, {:multiple => true}) %>
+  </div>
+  <div class="field">
+    <%= f.label :country%><br />
+    <%= select(:provider, :country, Country.all.collect {|s| [s.name, s.slug] }, {:selected => @provider.country.map {|p| p.code} }, {:multiple => true}) %>
   </div>
   <div class="actions">
     <%= f.submit %>
