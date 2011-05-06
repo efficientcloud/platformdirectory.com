@@ -4,6 +4,6 @@ class Platform < ActiveRecord::Base
   has_many :provider, :through => :providers_platforms
 
   def to_param
-    permalink
+    slug
   end
 end

@@ -6,6 +6,6 @@ class Provider < ActiveRecord::Base
   belongs_to :status
 
   def to_param
-    permalink
+    slug
   end
 end
