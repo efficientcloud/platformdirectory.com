@@ -39,12 +39,12 @@ ActiveRecord::Schema.define(:version => 20110506165908) do
   end
 
   create_table "providers_countries", :force => true do |t|
-    t.integer "providers_id"
-    t.integer "countries_id"
+    t.integer "provider_id"
+    t.integer "country_id"
   end
 
-  create_table "providers_platform", :force => true do |t|
-    t.integer "providers_id"
+  create_table "providers_platforms", :force => true do |t|
+    t.integer "provider_id"
     t.integer "platform_id"
   end
 

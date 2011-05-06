@@ -13,7 +13,7 @@ class StatusesController < ApplicationController
   # GET /statuses/1
   # GET /statuses/1.xml
   def show
-    @status = Status.find(params[:id])
+    @status = Status.find_by_slug(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +34,7 @@ class StatusesController < ApplicationController
 
   # GET /statuses/1/edit
   def edit
-    @status = Status.find(params[:id])
+    @status = Status.find_by_slug(params[:id])
   end
 
   # POST /statuses
@@ -56,7 +56,7 @@ class StatusesController < ApplicationController
   # PUT /statuses/1
   # PUT /statuses/1.xml
   def update
-    @status = Status.find(params[:id])
+    @status = Status.find_by_slug(params[:id])
 
     respond_to do |format|
       if @status.update_attributes(params[:status])
@@ -72,7 +72,7 @@ class StatusesController < ApplicationController
   # DELETE /statuses/1
   # DELETE /statuses/1.xml
   def destroy
-    @status = Status.find(params[:id])
+    @status = Status.find_by_slug(params[:id])
     @status.destroy
 
     respond_to do |format|

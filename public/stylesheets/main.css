@@ -1,0 +1,26 @@
+td, tr, th {
+  border-style: collapse;
+  padding: 2px 20px 2px 15px;
+  border: 1px dotted grey;
+}
+th {
+  font-weight: bold;
+  background-color: lightgrey;
+}
+
+header, #content {
+  padding: 10px;
+}
+
+header {
+  font-family: serif;
+  margin-bottom: 2em;
+  background-color: #333;
+  color: white;
+}
+header h1, header p {
+  font-family: serif;
+}
+header h1 {
+  font-size: 3em;
+}

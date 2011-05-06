@@ -13,7 +13,7 @@ class PlatformsController < ApplicationController
   # GET /platforms/1
   # GET /platforms/1.xml
   def show
-    @platform = Platform.find(params[:id])
+    @platform = Platform.find_by_slug(params[:id])
 
     respond_to do |format|
       format.html # show.html.erb
@@ -34,7 +34,7 @@ class PlatformsController < ApplicationController
 
   # GET /platforms/1/edit
   def edit
-    @platform = Platform.find(params[:id])
+    @platform = Platform.find_by_slug(params[:id])
   end
 
   # POST /platforms
@@ -56,7 +56,7 @@ class PlatformsController < ApplicationController
   # PUT /platforms/1
   # PUT /platforms/1.xml
   def update
-    @platform = Platform.find(params[:id])
+    @platform = Platform.find_by_slug(params[:id])
 
     respond_to do |format|
       if @platform.update_attributes(params[:platform])
@@ -72,7 +72,7 @@ class PlatformsController < ApplicationController
   # DELETE /platforms/1
   # DELETE /platforms/1.xml
   def destroy
-    @platform = Platform.find(params[:id])
+    @platform = Platform.find_by_slug(params[:id])
     @platform.destroy
 
     respond_to do |format|
