@@ -25,7 +25,11 @@
   </div>
   <div class="field">
     <%= f.label :status %><br />
-    <%= f.text_field :status %>
+    <%= select(:provider, :status_id, Status.all.collect {|s| [s.name, s.slug] }) %>
+  </div>
+  <div class="field">
+    <%= f.label :platforms %><br />
+    <%= select(:provider, :platforms, Platform.all.collect {|s| [s.name, s.slug] }, {}, {:multiple => true}) %>
   </div>
   <div class="actions">
     <%= f.submit %>

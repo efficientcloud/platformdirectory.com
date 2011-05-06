@@ -43,12 +43,11 @@ class ProvidersController < ApplicationController
 
     o = params[:provider]
     o['status'] = Status.find_by_slug o['status']
+    o['platforms'] = o['platforms'].map {|p| Platform.find_by_slug p}
 
     @provider = Provider.new(params[:provider])
 
-    puts @provider
     @provider.country = []
-    @provider.platforms = []
 
     respond_to do |format|
       if @provider.save
@@ -65,9 +64,13 @@ class ProvidersController < ApplicationController
   # PUT /providers/1.xml
   def update
     @provider = Provider.find_by_slug(params[:id])
+    
+    o = params[:provider]
+    o['status'] = Status.find_by_slug o['status']
+    o['platforms'] = o['platforms'].map {|p| Platform.find_by_slug p}
 
     respond_to do |format|
-      if @provider.update_attributes(params[:provider])
+      if @provider.update_attributes(o)
         format.html { redirect_to(@provider, :notice => 'Provider was successfully updated.') }
         format.xml  { head :ok }
       else
