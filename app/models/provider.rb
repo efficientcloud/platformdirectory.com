@@ -10,4 +10,12 @@ class Provider < ActiveRecord::Base
   def to_param
     slug
   end
+
+  def image
+    if File.exists?('public/images/providers/%s.png' % @slug)
+      return '/images/providers/%s.png' % @slug
+    else
+      return '/images/providers/default.png'
+    end
+  end
 end

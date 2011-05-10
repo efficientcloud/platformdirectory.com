@@ -8,6 +8,10 @@ PlatformdirectoryCom::Application.routes.draw do
 
   resources :providers
 
+  match ':slug' => 'landing#detail', :as => :landing
+
+  root :to => 'landing#index'
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
