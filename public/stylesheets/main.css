@@ -58,10 +58,11 @@ header h1 {
 
 .provider img.logo {
   padding: 5px;
-  height: 80px;
+  max-height: 80px;
   width: 150px;
   position: absolute;
-  left: 17px;
+  right: 100%;
+  margin-right: -177px;
   top: 0;
 }
 

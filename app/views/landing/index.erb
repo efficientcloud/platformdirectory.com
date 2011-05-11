@@ -1,6 +1,6 @@
 <% @providers.each do |p| %>
   <div class="provider">
-    <a href="/<%= p.slug %>">
+    <a href="<%= p.url %>">
       <img class="logo" src="<%= p.image %>" />
     </a>
     <div class="more">
@@ -14,7 +14,7 @@
         <img src="<%= pl.image %>" title="<%=h pl.name %>" />
       <% end %></p>
       <p class="countries"><% p.country.each do |pl| %>
-        <img src="<%= pl.image %>" title="<%=h pl.name %>" />
+        <img src="<%= pl.image %>" title="<%=h pl.name || pl.code %>" />
       <% end %></p>
       <p class="ec2">
         <% if p.on_ec2 %><img src="/images/ec2.png" /><% end %>

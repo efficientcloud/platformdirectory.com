@@ -15,7 +15,7 @@ class Provider < ActiveRecord::Base
     filename = '/images/providers/%s.*' % self.slug
     matching = Dir.glob 'public%s' % filename
     if matching.length > 0
-      return matching[0].sub('/images','')
+      return matching[0].sub('public','')
     else
       return '/images/providers/default.png'
     end

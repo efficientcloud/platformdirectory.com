@@ -14,4 +14,12 @@ class Platform < ActiveRecord::Base
       return '/images/platforms/default.png'
     end
   end
+
+  def self.find_by_slug_or_create(slug)
+    x  = find_by_slug(slug)
+    if x != nil
+      return x
+    end
+    return create(:name => slug)
+  end
 end
