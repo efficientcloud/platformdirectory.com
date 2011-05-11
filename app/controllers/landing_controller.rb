@@ -4,6 +4,7 @@ class LandingController < ApplicationController
   def index
     @platforms = Platform.find(:all)
     @providers = Provider.find(:all)
+    @platform = nil
 
     respond_to do |format|
       format.html # index.html.erb

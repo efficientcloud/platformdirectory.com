@@ -38,7 +38,6 @@ th {
 
 header {
   font-family: serif;
-  margin-bottom: 2em;
   color: white;
 }
 header h1, header p {
@@ -58,7 +57,7 @@ header h1 {
 
 .provider img.logo {
   padding: 5px;
-  max-height: 100px;
+  max-height: 75px;
   max-width: 150px;
   position: absolute;
   right: 100%;
@@ -86,4 +85,27 @@ header h1 {
   top: 0;
   right: 0;
   width: 150px;
+}
+
+#nav {
+  left: 180px;
+  position: relative;
+  margin-bottom: 1em;
+  border-bottom: 1px solid rgb(200,200,200);
+}
+
+#nav a {
+  display: inline-block;
+  border-left: 1px solid rgb(200,200,200);
+  border-top: 1px solid rgb(200,200,200);
+  border-right: 1px solid rgb(200,200,200);
+  padding: 0px 10px;
+  margin-bottom: -1px;
+  text-decoration: none;
+}
+
+#nav a.active {
+  font-weight: bold;
+  color: inherit;
+  border-bottom: 1px solid #D9D9D9;
 }

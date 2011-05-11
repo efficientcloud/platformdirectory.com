@@ -16,7 +16,7 @@ CSV::Reader.parse(File.open('/Users/fin/Downloads/paas overview structure.csv', 
   provider.name = row[0]
   provider.url = row[6]
   
-  provider.platforms = (row[2] || '').downcase.split(',').map { |x| Platform.find_by_slug_or_create(x.strip) }
+  provider.platforms = (row[2] || '').downcase.split(',').map { |x| Platform.find_or_create(x.strip) }
   provider.platforms.reject! {|x| x.slug == nil}
 
 
