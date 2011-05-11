@@ -19,12 +19,11 @@ CSV::Reader.parse(File.open('/Users/fin/Downloads/paas overview structure.csv', 
   provider.platforms = (row[2] || '').downcase.split(',').map { |x| Platform.find_by_slug_or_create(x.strip) }
   provider.platforms.reject! {|x| x.slug == nil}
 
-  puts provider.platforms.map {|x| x.slug}
 
   provider.country = (row[3] || '').downcase.split(',').map { |x| Country.find_by_code_or_create(x.strip) }
   provider.country.reject! {|x| x.code == nil}
-  puts provider.country.map {|x| x.code}
 
+  provider.description = row[7]
 
   if provider.image.index('default') != nil and row[8]
     puts 'fetching logo'
