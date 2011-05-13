@@ -5,16 +5,20 @@ class LandingController < ApplicationController
   def index
     @platforms = Platform.find :all
     @countries = Country.find :all
-    
+
     respond_to do |format|
       format.html # index.html.erb
     end
   end
 
   def filter
-    @platforms = Platform.find(:all)
-    @providers = Provider.find(:all)
-    
+    @country = Country.find_by_code params[:country]
+    @platform = Platform.find_by_slug params[:platform]
+    @providers = Provider.joins(:country).joins(:platforms).find(:all, :conditions => {
+      :countries => {:code => @country.code},
+      :platforms => {:slug => @platform.slug},
+    })
+
     respond_to do |format|
       format.html # index.html.erb
     end
