@@ -8,7 +8,9 @@ PlatformdirectoryCom::Application.routes.draw do
 
   resources :providers
 
-  match ':slug' => 'landing#detail', :as => :landing
+  match 'list' => 'landing#list', :as => :list
+  match ':slug' => 'landing#detail', :as => :detail
+  match ':platform/:country' => 'landing#filter', :as => :filter
 
   root :to => 'landing#index'
 

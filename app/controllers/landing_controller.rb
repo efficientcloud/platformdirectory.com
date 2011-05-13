@@ -1,14 +1,32 @@
 class LandingController < ApplicationController
   # GET /countries
   # GET /countries.xml
+
   def index
+    @platforms = Platform.find :all
+    @countries = Country.find :all
+    
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+
+  def filter
+    @platforms = Platform.find(:all)
+    @providers = Provider.find(:all)
+    
+    respond_to do |format|
+      format.html # index.html.erb
+    end
+  end
+
+  def list
     @platforms = Platform.find(:all)
     @providers = Provider.find(:all)
     @platform = nil
 
     respond_to do |format|
       format.html # index.html.erb
-      format.xml  { render :xml => @countries }
     end
   end
 
@@ -26,8 +44,7 @@ class LandingController < ApplicationController
     #@country = Country.find(params[:id])
 
     respond_to do |format|
-      format.html { render 'index' }
-      format.xml  { render :xml => @country }
+      format.html { render 'list' }
     end
   end
 end
