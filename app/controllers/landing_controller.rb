@@ -15,10 +15,18 @@ class LandingController < ApplicationController
   # GET /countries/1
   # GET /countries/1.xml
   def detail
+    @platforms = Platform.find(:all)
+
+
+    p = Platform.find_by_slug(params[:slug])
+    if p
+      @platform = p
+      @providers = p.providers
+    end
     #@country = Country.find(params[:id])
 
     respond_to do |format|
-      format.html # show.html.erb
+      format.html { render 'index' }
       format.xml  { render :xml => @country }
     end
   end
