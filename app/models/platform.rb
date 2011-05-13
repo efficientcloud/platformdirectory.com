@@ -1,7 +1,8 @@
 class Platform < ActiveRecord::Base
   has_permalink :name, :slug
 
-  has_many :provider, :through => :providers_platforms
+  has_many :providers_platforms
+  has_many :providers, :through => :providers_platforms
 
   def to_param
     slug
