@@ -12,22 +12,23 @@ class LandingController < ApplicationController
   end
 
   def filter
-    @country = Country.find_by_code params[:country]
-    @platform = Platform.find_by_slug params[:platform]
-    @platforms = [@platform]
-    @providers = Provider.joins(:country).joins(:platforms).find(:all, :conditions => {
-      :countries => {:code => @country.code},
-      :platforms => {:slug => @platform.slug},
-    })
-
-    respond_to do |format|
-      format.html { render 'list' }
-    end
+    puts params
+    redirect_to filteredlist_path :platform => params[:platform], :country => country_name_to_code(params[:country][:name]).downcase
   end
 
   def list
-    @platforms = Platform.find(:all)
-    @providers = Provider.find(:all)
+    @platforms = params[:platform]?[Platform.find_by_slug(params[:platform])]:Platform.find(:all)
+    @countrys = params[:country]?[Country.find_by_code(params[:country])]:Country.find(:all)
+    if params[:platform]
+      @country = Country.find_by_code params[:country]
+      @platform = Platform.find_by_slug params[:platform]
+      @providers = Provider.joins(:country).joins(:platforms).find(:all, :conditions => {
+        :countries => {:code => @country.code},
+        :platforms => {:slug => @platform.slug},
+      })
+    else
+      @providers = Provider.find(:all)
+    end
     @platform = nil
 
     respond_to do |format|
