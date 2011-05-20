@@ -44,6 +44,7 @@ class LandingController < ApplicationController
   # GET /countries/1
   # GET /countries/1.xml
   def detail
+    params[:platform] = params[:slug]
     return self.list
   end
 end

@@ -12,10 +12,10 @@
   <% end %>
 <% end %>
 
-<%= render :partial => 'provider', :collection => @local_providers, :locals => {:country => @country} %>
+<%= render :partial => 'provider', :collection => @local_providers || @providers, :locals => {:country => @country} %>
 
 <% @non_local_providers = @providers.reject{|x| (@local_providers || []).include? x} %>
-<% if @non_local_providers.length>0 %>
+<% if @non_local_providers.length>0 and defined?(@local_platforms) %>
   <hr />
     <div class="nav">
       <a href="/list">all</a>
