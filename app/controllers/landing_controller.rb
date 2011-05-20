@@ -16,24 +16,24 @@ class LandingController < ApplicationController
   end
 
   def list
-    @platforms = Platform.find :all
-    if params[:platform]
-      @platform = Platform.find_by_slug params[:platform]
-      @providers = Provider.joins(:country).joins(:platforms).find(:all, :conditions => {
-        :platforms => {:slug => @platform.slug},
-      })
-    else
-      @providers = Provider.find(:all)
-      @platform = nil
-    end
-
+    @platforms = Platform.find(:all).select{|x| x.providers.length>0}
+    @providers = Provider.find(:all)
+    
     if params[:country]
       @country = Country.find_by_code(params[:country])
       @country = @country?(@country.attributes):({'name' => country_code_to_name(params[:country].upcase), 'code' => params[:country]})
 
-      @local_providers = @providers.select{|p| p.country.select{|c| c.code==@country['code']}}
-      @local_platforms = @providers.map{|x| x.platforms}.flatten().uniq
+      @local_providers = @providers.select{|p| p.country.select{|c| c.code==@country['code']}.length>0}
+      @local_platforms = @local_providers.map{|x| x.platforms}.flatten().uniq
     end
+
+    if params[:platform]
+      @platform = Platform.find_by_slug params[:platform]
+      @providers = @providers.select{|p| p.platforms.include?(@platform)}
+    else
+      @platform = nil
+    end
+
 
 
     respond_to do |format|
@@ -44,7 +44,7 @@ class LandingController < ApplicationController
   # GET /countries/1
   # GET /countries/1.xml
   def detail
-    @platforms = Platform.find(:all)
+    @platforms = Platform.find(:all).select{|x| x.providers.length>0}
 
 
     p = Platform.find_by_slug(params[:slug])
