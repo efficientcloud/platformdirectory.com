@@ -30,6 +30,9 @@ class LandingController < ApplicationController
     if params[:platform]
       @platform = Platform.find_by_slug params[:platform]
       @providers = @providers.select{|p| p.platforms.include?(@platform)}
+      if params[:country]
+        @local_providers = @local_providers.select{|p| p.platforms.include?(@platform)}
+      end
     else
       @platform = nil
     end
