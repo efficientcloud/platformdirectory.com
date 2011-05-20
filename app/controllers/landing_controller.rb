@@ -27,7 +27,7 @@ class LandingController < ApplicationController
       @local_platforms = @local_providers.map{|x| x.platforms}.flatten().uniq
     end
 
-    if params[:platform]
+    if params[:platform] and params[:platform]!='list'
       @platform = Platform.find_by_slug params[:platform]
       @providers = @providers.select{|p| p.platforms.include?(@platform)}
       if params[:country]
