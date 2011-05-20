@@ -1,6 +1,5 @@
 <form id="searchform" method="post" action="/filter">
-  <p>What kind of platform are you interested in?</p>
-  <br />
+  <label>What kind of platform are you interested in?</label>
 
   <input type="hidden" id="selected_platform" name='platform' />
   <ul>
@@ -10,16 +9,12 @@
     </li>
   <% end %>
   </ul>
-  <br style="clear: left;"/>
 
-  <br />
-  <p>Where are you?</p>
+  <label>Where are you?</label>
 
   <%= country_select :country,:name %>
   <p><small>* We'll highlight Providers in your Country, if there are any!</small></p>
 
-  <br />
-  <br />
 
-  <input type="submit" value="Search" /> or <a href="/list">view complete list</a>
+  <input type="submit" value="Search" class="submit" /> or <a href="/list">view complete list</a>
 </form>

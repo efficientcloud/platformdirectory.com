@@ -129,12 +129,30 @@ header h1 {
 }
 
 #searchform {
-  margin-left: 180px;
+  margin-left: 190px;
   max-width: 50%;
 }
+
+#searchform label {
+  display: block;
+  margin-left: -5px;
+  clear: left;
+}
+
 #searchform ul {
   max-width: 60%;
   position: relative;
+  margin-top: 10px;
+  margin-bottom: 1.5em;
+  height: 55px;
+}
+
+small {
+  font-size: 70%;
+}
+
+input.submit {
+  margin-top: 1.5em;
 }
 
 #searchform li {
