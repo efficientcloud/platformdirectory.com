@@ -87,7 +87,7 @@ header h1 {
   width: 150px;
 }
 
-#nav {
+.nav {
   margin-left: 172px;
   padding-left: 5px;
   position: relative;
@@ -95,7 +95,7 @@ header h1 {
   border-bottom: 1px solid rgb(200,200,200);
 }
 
-#nav a {
+.nav a {
   display: inline-block;
   border-left: 1px solid rgb(200,200,200);
   border-top: 1px solid rgb(200,200,200);
@@ -105,7 +105,7 @@ header h1 {
   text-decoration: none;
 }
 
-#nav a.active {
+.nav a.active {
   font-weight: bold;
   color: inherit;
   border-bottom: 1px solid #D9D9D9;

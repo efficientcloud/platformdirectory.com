@@ -1,8 +1,8 @@
 <% if defined?(@local_platforms) and @local_platforms.length<1 %>
-  None found, sorry!
+  <div class="message">None found, sorry!</div>
 <% else %>
-  <div id="nav">
-    <a href="/list" <% if @platform == nil %>class="active"<% end %>>all</a>
+  <div class="nav">
+    <a href="/list<% if defined? @country %>/<%= @country['code'] %><% end %>" <% if @platform == nil %>class="active"<% end %>>all</a>
     <%= render :partial => 'platform', :collection => defined?(@local_platforms)? @local_platforms : @platforms %>
   </div>
   <% if @country!=nil %>
@@ -14,8 +14,12 @@
 
 <%= render :partial => 'provider', :collection => @local_providers, :locals => {:country => @country} %>
 
-<% if @local_platforms %>
-<hr />
-<%= render :partial => 'platform', :collection => @platforms %>
+<% @non_local_providers = @providers.reject{|x| (@local_providers || []).include? x} %>
+<% if @non_local_providers.length>0 %>
+  <hr />
+    <div class="nav">
+      <a href="/list">all</a>
+      <%= render :partial => 'platform', :collection => @platforms %>
+    </div>
+  <%= render :partial => 'provider', :collection => @non_local_providers %>
 <% end %>
-<%= render :partial => 'provider', :collection => @providers.reject{|x| (@local_providers || []).include? x} %>
