@@ -14,8 +14,10 @@ class Country < ActiveRecord::Base
     end
     x  = find_by_code(code)
     if x != nil
+      x.name = country_code_to_name(code.upcase)
+      x.save
       return x
     end
-    return create(:code => code)
+    return create(:code => code, :name => country_code_to_name(code.upcase))
   end
 end

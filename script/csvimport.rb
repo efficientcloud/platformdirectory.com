@@ -1,7 +1,7 @@
 require 'csv'
 require 'open-uri'
 
-CSV::Reader.parse(File.open('/Users/fin/Downloads/paas overview structure.csv', 'rb'), ',') do |row|
+CSV::Reader.parse(File.open('paas overview structure.csv', 'rb'), ',') do |row|
   if row[0] == 'name' or not row[0]
     next
   end
