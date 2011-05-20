@@ -3,7 +3,7 @@ class LandingController < ApplicationController
   # GET /countries.xml
 
   def index
-    @platforms = Platform.find :all
+    @platforms = Provider.joins(:platforms).find(:all).map{|x| x.platforms}.flatten.uniq
     @countries = Country.find :all
 
     respond_to do |format|
