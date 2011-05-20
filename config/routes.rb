@@ -1,12 +1,10 @@
 PlatformdirectoryCom::Application.routes.draw do
 
-  resources :platforms
-
-  resources :countries
-
-  resources :statuses
-
-  resources :providers
+  # use the csv for managing!
+  #resources :platforms
+  #resources :countries
+  #resources :statuses
+  #resources :providers
 
   match 'list' => 'landing#list', :as => :list
   match 'filter' => 'landing#filter', :as => :filter
