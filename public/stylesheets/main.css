@@ -115,3 +115,33 @@ header h1 {
 .active {
   text-decoration: underline;
 }
+
+#searchform {
+  margin-left: 180px;
+  max-width: 50%;
+}
+#searchform ul {
+  max-width: 60%;
+  position: relative;
+}
+
+#searchform li {
+  float: left;
+  width: 50px;
+  height: 50px;
+  vertical-align: center;
+  text-align: center;
+  color: grey;
+  font-size: 9px;
+  overflow: hidden;
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+
+input[type=submit] {
+  background-color: green;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  color: white;
+}

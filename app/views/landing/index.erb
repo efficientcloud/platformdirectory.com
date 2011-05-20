@@ -1,11 +1,16 @@
-<form method="post" action="/filter">
+<form id="searchform" method="post" action="/filter">
   <input type="hidden" id="selected_platform" name='platform' />
+  <ul>
   <% @platforms.each do |p| %>
-    <a class="platform_choice" id="platform_choice_<%= p.slug %>" onclick="search_selected_platform('<%= p.slug %>'); return false;"><%= p.name %></a>
+    <li><a class="platform_choice" id="platform_choice_<%= p.slug %>" onclick="search_selected_platform('<%= p.slug %>'); return false;"><%= p.name %></a></li>
   <% end %>
-
+  </ul>
+  <br style="clear: left;"/>
 
   <%= country_select :country,:name %>
 
-  <input type="submit" />
+  <br />
+  <br />
+
+  <input type="submit" value="Search" /> or <a href="/list">view complete list</a>
 </form>
