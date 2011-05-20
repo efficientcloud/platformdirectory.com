@@ -1,25 +1,27 @@
+<% if @country!=nil %>
+  <div id="current_country">
+    <img src="/images/countries/<%= @country['code']%>.png" />
+  </div>
+<% end %>
 <% if defined?(@local_platforms) and @local_platforms.length<1 %>
-  <div class="message">None found, sorry!</div>
+  <div class="message">None found, sorry! Worldwide listings follow:</div>
 <% else %>
   <div class="nav">
     <a href="/list<% if defined? @country %>/<%= @country['code'] %><% end %>" <% if @platform == nil %>class="active"<% end %>>all</a>
-    <%= render :partial => 'platform', :collection => defined?(@local_platforms)? @local_platforms : @platforms %>
+    <%= render :partial => 'platform', :collection => defined?(@local_platforms)? @local_platforms : @platforms, :locals => {:country => @country} %>
   </div>
-  <% if @country!=nil %>
-    <div id="current_country">
-      <%= @country['code'] %> / <%= @country['name'] %>
-    </div>
-  <% end %>
 <% end %>
 
 <%= render :partial => 'provider', :collection => @local_providers || @providers, :locals => {:country => @country} %>
 
 <% @non_local_providers = @providers.reject{|x| (@local_providers || []).include? x} %>
 <% if @non_local_providers.length>0 and defined?(@local_platforms) %>
-  <hr />
+<div id="worldwide">
+    <img src="/images/countries/world.png" id="worldwide_icon"/>
     <div class="nav">
       <a href="/list">all</a>
-      <%= render :partial => 'platform', :collection => @platforms %>
+      <%= render :partial => 'platform', :collection => @platforms, :locals => {:country => nil} %>
     </div>
   <%= render :partial => 'provider', :collection => @non_local_providers %>
+</div>
 <% end %>

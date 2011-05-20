@@ -168,3 +168,29 @@ input[type=submit] {
   color: white;
   cursor: pointer;
 }
+
+#current_country, #worldwide_icon {
+  position: absolute;
+  left: 150px;
+}
+
+#worldwide {
+  margin-top: 8em;
+}
+
+#worldwide_icon {
+  margin-left: -3px;
+}
+
+div.message {
+  margin-left: 180px;
+  margin-bottom: 9em;
+}
+
+div#content {
+  margin-top: 6em;
+}
+
+div.nav {
+  margin-top: -4em;
+}
