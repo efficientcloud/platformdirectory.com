@@ -1,5 +1,8 @@
+<h2 style="margin-left: 180px; font-size: 1.5em; margin-bottom: 2em;">Helping you navigate the PAAS djungle!</h2>
+
 <form id="searchform" method="post" action="/filter">
-  <label>What kind of platform are you interested in?</label>
+
+  <label>What are you developing on?</label>
 
   <input type="hidden" id="selected_platform" name='platform' />
   <ul>
@@ -13,7 +16,7 @@
   <label>Where are you?</label>
 
   <%= country_select :country,:name %>
-  <p><small>* We'll highlight Providers in your Country, if there are any!</small></p>
+  <p><small>* We'll highlight Providers with Servers in your Country, if there are any!</small></p>
 
 
   <input type="submit" value="Search" class="submit" /> or <a href="/list">view complete list</a>
