@@ -3,7 +3,7 @@ class LandingController < ApplicationController
   # GET /countries.xml
 
   def index
-    @platforms = Provider.joins(:platforms).find(:all).map{|x| x.platforms}.flatten.uniq
+    @platforms = Provider.find(:all, :include => [:platforms]).map{|x| x.platforms}.flatten.uniq
     @countries = Country.find :all
 
     respond_to do |format|
@@ -12,13 +12,13 @@ class LandingController < ApplicationController
   end
 
   def filter
-    redirect_to filteredlist_path :platform => params[:platform], :country => country_name_to_code(params[:country][:name]).downcase
+    redirect_to filteredlist_path :platform => params[:platform]||'all', :country => country_name_to_code(params[:country][:name]).downcase
   end
 
   def list
-    @platforms = Platform.find(:all).select{|x| x.providers.length>0}
-    @providers = Provider.find(:all)
-    
+    @platforms = Platform.find(:all, :include => [:providers]).select{|x| x.providers.length>0}
+    @providers = Provider.find(:all, :include => [:platforms, :country])
+
     if params[:country]
       @country = Country.find_by_code(params[:country])
       @country = @country?(@country.attributes):({'name' => country_code_to_name(params[:country].upcase), 'code' => params[:country]})
@@ -37,25 +37,13 @@ class LandingController < ApplicationController
 
 
     respond_to do |format|
-      format.html # index.html.erb
+      format.html {render 'list'}
     end
   end
 
   # GET /countries/1
   # GET /countries/1.xml
   def detail
-    @platforms = Platform.find(:all).select{|x| x.providers.length>0}
-
-
-    p = Platform.find_by_slug(params[:slug])
-    if p
-      @platform = p
-      @providers = p.providers
-    end
-    #@country = Country.find(params[:id])
-
-    respond_to do |format|
-      format.html { render 'list' }
-    end
+    return self.list
   end
 end
