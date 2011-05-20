@@ -116,6 +116,16 @@ header h1 {
   text-decoration: underline;
 }
 
+#searchform li.active {
+  background-color: rgb(255,255,255);
+  cursor: pointer;
+}
+
+#searchform li:hover {
+  cursor: pointer;
+  background-color: rgb(240,255,240);
+}
+
 #searchform {
   margin-left: 180px;
   max-width: 50%;

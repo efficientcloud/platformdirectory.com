@@ -2,7 +2,9 @@
   <input type="hidden" id="selected_platform" name='platform' />
   <ul>
   <% @platforms.each do |p| %>
-    <li><a class="platform_choice" id="platform_choice_<%= p.slug %>" onclick="search_selected_platform('<%= p.slug %>'); return false;"><%= p.name %></a></li>
+    <li class="platform_choice" id="platform_choice_<%= p.slug %>" onclick="search_selected_platform('<%= p.slug %>'); return false;">
+      <a><%= p.name %></a>
+    </li>
   <% end %>
   </ul>
   <br style="clear: left;"/>
