@@ -1,0 +1,23 @@
+  <div class="provider">
+    <a href="<%= provider.url %>">
+      <img class="logo" src="<%= provider.image %>" />
+    </a>
+    <div class="more">
+      <a href="/<%= provider.slug %>">
+        <p class="name"><%=h provider.name %></p>
+        <p class="free"><% provider.platforms.each do |pl| %>
+          <% if pl.image %><img src="<%= pl.image %>" title="<%=h pl.name %>" alt="<%=h pl.name%>" />
+          <% else %><%= h pl.name %><% end %>
+      <% end %><%= provider.description %></p>
+      </a>
+    </div>
+    <div class="details">
+      <p class="countries"><% provider.country.each do |pl| %>
+        <img src="<%= pl.image %>" title="<%=h pl.name || pl.code %>" />
+      <% end %></p>
+      <p class="ec2">
+        <% if provider.on_ec2 %><img src="/images/ec2.png" /><% end %>
+      </p>
+    </div>
+  </div>
+
