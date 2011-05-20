@@ -1,4 +1,7 @@
 <form id="searchform" method="post" action="/filter">
+  <p>What kind of platform are you interested in?</p>
+  <br />
+
   <input type="hidden" id="selected_platform" name='platform' />
   <ul>
   <% @platforms.each do |p| %>
@@ -9,7 +12,11 @@
   </ul>
   <br style="clear: left;"/>
 
+  <br />
+  <p>Where are you?</p>
+
   <%= country_select :country,:name %>
+  <p><small>* We'll highlight Providers in your Country, if there are any!</small></p>
 
   <br />
   <br />

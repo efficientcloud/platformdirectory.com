@@ -4,7 +4,7 @@
   </div>
 <% end %>
 <% if defined?(@local_platforms) and @local_platforms.length<1 %>
-  <div class="message">None found, sorry! Worldwide listings follow:</div>
+  <div class="message">None found, sorry! If we missed one, <a href="http://efficientcloud.wufoo.com/forms/s7x3a7/" onclick="window.open(this.href,  null, 'height=679, width=680, toolbar=0, location=0, status=1, scrollbars=1, resizable=1'); return false" title="platformdirectory: paas providers">let us know!</a></div>
 <% else %>
   <div class="nav">
     <a href="/list<% if defined? @country %>/<%= @country['code'] %><% end %>" <% if @platform == nil %>class="active"<% end %>>all</a>

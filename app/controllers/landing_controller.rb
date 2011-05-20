@@ -12,7 +12,11 @@ class LandingController < ApplicationController
   end
 
   def filter
-    redirect_to filteredlist_path :platform => params[:platform]||'all', :country => country_name_to_code(params[:country][:name]).downcase
+    if params[:platform].length==0
+      params[:platform] = 'list'
+    end
+    puts params.to_json
+    redirect_to filteredlist_path(:platform => params[:platform]||'list', :country => country_name_to_code(params[:country][:name]).downcase)
   end
 
   def list
