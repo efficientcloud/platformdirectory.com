@@ -1,34 +1,19 @@
 <div id="nav">
   <a href="/list" <% if @platform == nil %>class="active"<% end %>>all</a>
-  <% @platforms.each do |p| %>
+  <% (@platforms).each do |p| %>
     <a href="/<%= p.slug %>" title="<%=h p.name %>" <% if @platform == p %>class="active"<% end %>>
       <% if p.image %><img src="<%= p.image %>"/><% end %>
       <%=h p.name %>
     </a>
   <% end %>
 </div>
-
-<% @providers.each do |p| %>
-  <div class="provider">
-    <a href="<%= p.url %>">
-      <img class="logo" src="<%= p.image %>" />
-    </a>
-    <div class="more">
-      <a href="/<%= p.slug %>">
-        <p class="name"><%=h p.name %></p>
-        <p class="free"><% p.platforms.each do |pl| %>
-          <% if pl.image %><img src="<%= pl.image %>" title="<%=h pl.name %>" alt="<%=h pl.name%>" />
-          <% else %><%= h pl.name %><% end %>
-      <% end %><%= p.description %></p>
-      </a>
-    </div>
-    <div class="details">
-      <p class="countries"><% p.country.each do |pl| %>
-        <img src="<%= pl.image %>" title="<%=h pl.name || pl.code %>" />
-      <% end %></p>
-      <p class="ec2">
-        <% if p.on_ec2 %><img src="/images/ec2.png" /><% end %>
-      </p>
-    </div>
+<% if @country!=nil %>
+  <div id="current_country">
+    <%= @country['code'] %> / <%= @country['name'] %>
   </div>
 <% end %>
+
+<%= render :partial => 'provider', :collection => @local_providers %>
+
+<hr />
+<%= render :partial => 'provider', :collection => @providers %>
