@@ -5,10 +5,18 @@
     <div class="more">
       <a href="/<%= provider.slug %>">
         <p class="name"><%=h provider.name %></p>
-        <p class="free"><% provider.platforms.each do |pl| %>
-          <% if pl.image %><img src="<%= pl.image %>" title="<%=h pl.name %>" alt="<%=h pl.name%>" />
-          <% else %><%= h pl.name %><% end %>
-      <% end %><%= provider.description %></p>
+        <p class="platforms">
+          <% provider.platforms.each do |pl| %>
+            <% if pl.image %>
+              <img src="<%= pl.image %>" title="<%=h pl.name %>" alt="<%=h pl.name%>" />
+            <% else %>
+              <%= h pl.name %>
+            <% end %>
+          <% end %>
+        </p>
+        <p class="description">
+          <%= provider.description %>
+        </p>
       </a>
     </div>
     <div class="details">
