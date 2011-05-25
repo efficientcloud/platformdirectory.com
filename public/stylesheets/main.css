@@ -244,3 +244,7 @@ div.nav {
   margin-left: -200px;
   width: 400px;
 }
+
+#feedback a:hover {
+  background:inherit;
+}
