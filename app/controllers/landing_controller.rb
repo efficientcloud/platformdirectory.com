@@ -48,10 +48,13 @@ class LandingController < ApplicationController
     end
   end
 
-  # GET /countries/1
-  # GET /countries/1.xml
   def detail
-    params[:platform] = params[:slug]
-    return self.list
+    if Platform.find_by_slug(params[:slug])
+      params[:platform] = params[:slug]
+      return self.list
+    end
+    if (x = Provider.find_by_slug(params[:slug]))
+      redirect_to x.url
+    end
   end
 end
