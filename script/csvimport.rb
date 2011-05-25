@@ -15,6 +15,7 @@ CSV::Reader.parse(File.open('paas overview structure.csv', 'rb'), ',') do |row|
   end
   provider.name = row[0]
   provider.url = row[6]
+  provider.logo_is_dark = (row[9] == 'dark')
   
   provider.platforms = (row[2] || '').downcase.split(',').map { |x| Platform.find_or_create(x.strip) }
   provider.platforms.reject! {|x| x.slug == nil}

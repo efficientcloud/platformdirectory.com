@@ -1,6 +1,6 @@
   <div class="provider">
-    <a href="<%= provider.url %>">
-      <img class="logo" src="<%= provider.image %>" />
+    <a href="<%= provider.url %>" class="logo <%= provider.logo_is_dark ? 'dark' : '' %>">
+      <img src="<%= provider.image %>" />
     </a>
     <div class="more">
       <a href="/<%= provider.slug %>">

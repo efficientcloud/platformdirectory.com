@@ -60,14 +60,31 @@ h2.tagline {
   line-height: 1.5;
 }
 
-.provider img.logo {
-  padding: 5px;
-  max-height: 50px;
-  max-width: 150px;
+.provider .logo {
+  padding: 10px;
+  height: 50px;
+  width: 150px;
   position: absolute;
   right: 100%;
   margin-right: -192px;
   top: 0;
+  text-align: right;
+  line-height: 50px;
+}
+
+.provider .logo img {
+  max-width: 100%;
+  max-height: 100%;
+}
+
+a:hover {
+  color: inherit;
+  background-color: inherit;
+}
+
+.provider .logo.dark {
+  background-color: #D9D9D9;
+  border-radius: 10px 0px 0px 10px;
 }
 
 .provider div.more {
