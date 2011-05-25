@@ -8,6 +8,7 @@ gem 'rails', '3.0.4'
 gem 'sqlite3'
 gem 'permalink_fu'
 gem 'sundawg_country_codes', :git => 'https://github.com/SunDawg/country_codes.git'
+gem 'pg'
 
 # Use unicorn as the web server
 # gem 'unicorn'
