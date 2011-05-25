@@ -267,3 +267,11 @@ div.nav {
 #feedback a:hover {
   background:inherit;
 }
+
+
+#footer {
+  clear: left;
+  margin-top: 5em;
+  margin-left: 210px;
+  font-size: .8em;
+}
