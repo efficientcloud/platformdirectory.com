@@ -208,16 +208,18 @@ input.submit {
 }
 
 #current_country, #worldwide_icon {
-  position: absolute;
-  left: 150px;
+  margin-left: 198px;
+  margin-bottom: .7em;
+  line-height: 22px;
+  font-weight: bold;
+}
+#current_country img, #worldwide_icon img {
+  padding-right: .5em;
+  vertical-align: baseline;
 }
 
 #worldwide {
   margin-top: 8em;
-}
-
-#worldwide_icon {
-  margin-left: -3px;
 }
 
 div.message {

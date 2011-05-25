@@ -1,6 +1,7 @@
 <% if @country!=nil %>
   <div id="current_country">
     <img src="/images/countries/<%= @country['code']%>.png" />
+    <%= @country['name'] %>
   </div>
 <% end %>
 <% if defined?(@local_platforms) and @local_platforms.length<1 %>
@@ -17,11 +18,14 @@
 <% @non_local_providers = @providers.reject{|x| (@local_providers || []).include? x} %>
 <% if @non_local_providers.length>0 and defined?(@local_platforms) %>
 <div id="worldwide">
-    <img src="/images/countries/world.png" id="worldwide_icon"/>
-    <div class="nav">
-      <a href="/list">all</a>
-      <%= render :partial => 'platform', :collection => @platforms, :locals => {:country => nil} %>
-    </div>
+  <div id="worldwide_icon">
+    <img src="/images/countries/world.png"/>
+    Worldwide
+  </div>
+  <div class="nav">
+    <a href="/list">all</a>
+    <%= render :partial => 'platform', :collection => @platforms, :locals => {:country => nil} %>
+  </div>
   <%= render :partial => 'provider', :collection => @non_local_providers %>
 </div>
 <% end %>
