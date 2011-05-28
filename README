@@ -1,4 +1,0 @@
-1. Create database.yml
-2. rake db:setup
-3. Export the CSV from https://spreadsheets.google.com/spreadsheet/ccc?key=0AieNfGC6EPFddGFlY19ubzFxYU9NSHNfcDRiVm1WNlE
-4. ./script/csvimport.rb
