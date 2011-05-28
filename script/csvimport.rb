@@ -1,11 +1,12 @@
+#!/usr/bin/env rails runner
+
 require 'csv'
 require 'open-uri'
 
-CSV::Reader.parse(File.open('paas overview structure.csv', 'rb'), ',') do |row|
+CSV::Reader.parse(File.open('PlatformDirectory.com Data Source.csv', 'rb'), ',') do |row|
   if row[0] == 'name' or not row[0]
     next
   end
-
 
   slug = PermalinkFu.escape row[0]
 
@@ -32,7 +33,7 @@ CSV::Reader.parse(File.open('paas overview structure.csv', 'rb'), ',') do |row|
     if logopath
       logoextension = logopath.last(3)
 
-      open('public/images/providers/%s.%s' % [slug, logoextension], 'wb').write(open(logopath).read)
+      open('public/images/providers/%s.%s' % [slug, logoextension], 'wb').write(open(logopath).read) rescue nil
     end
   else
     puts 'skipped logo fetching'
