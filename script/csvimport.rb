@@ -9,25 +9,23 @@ CSV::Reader.parse(File.open('PlatformDirectory.com Data Source.csv', 'rb'), ',')
   end
 
   slug = PermalinkFu.escape row[0]
-
+  
   provider = Provider.find_by_slug slug
-  if not provider
-    provider = Provider.new({:slug => slug })
-  end
+  provider ||= Provider.new({:slug => slug })
+  
   provider.name = row[0]
-  provider.url = row[6]
-  provider.logo_is_dark = (row[9] == 'dark')
+  provider.url = row[5]
+  provider.logo_is_dark = (row[8] == 'dark')
   
   provider.platforms = (row[2] || '').downcase.split(',').map { |x| Platform.find_or_create(x.strip) }
   provider.platforms.reject! {|x| x.slug == nil}
-
-
+  
   provider.country = (row[3] || '').downcase.split(',').map { |x| Country.find_by_code_or_create(x.strip) }
   provider.country.reject! {|x| x.code == nil}
 
-  provider.description = row[7]
+  provider.description = row[6]
 
-  if provider.image.index('default') != nil and row[8]
+  if provider.image.index('default') != nil and row[7]
     puts 'fetching logo'
     logopath = row[8]
     if logopath
@@ -39,5 +37,5 @@ CSV::Reader.parse(File.open('PlatformDirectory.com Data Source.csv', 'rb'), ',')
     puts 'skipped logo fetching'
   end
 
-  provider.save()
+  provider.save
 end
