@@ -41,7 +41,8 @@ class LandingController < ApplicationController
   def detail
     if Platform.find_by_slug(params[:slug])
       params[:platform] = params[:slug]
-      return self.list
+      list
+      render :action => 'list'
     end
     if (x = Provider.find_by_slug(params[:slug]))
       redirect_to x.url

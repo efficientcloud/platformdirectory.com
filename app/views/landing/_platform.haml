@@ -1,4 +1,4 @@
-%a{:href => "/%s" + platform.slug + (country ? "/" + country['code'] = "/" : ""), :title => platform.name, :class => (@platform == platform ? "active" : "")}
+%a{:href => "/" + platform.slug + (country ? "/" + country['code'] : ""), :title => platform.name, :class => (@platform == platform ? "active" : "")}
   - if platform.image
     %img{:src => platform.image}
   = platform.name
