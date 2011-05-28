@@ -39,6 +39,14 @@ th {
   padding: 10px;
 }
 
+a {
+	color: #444;
+}
+a:hover {
+  color: inherit;
+  background-color: inherit;
+}
+
 header {
   color: white;
 }
@@ -50,6 +58,13 @@ h2.tagline {
   margin-left: 220px;
   margin-bottom: 1.2em;
   font-size: 1.3em;
+}
+body.about p {
+	margin-top: -.5em;
+	margin-left: 220px;
+  margin-bottom: 1.8em;
+  width: 450px;
+  line-height: 1.4em;
 }
 
 .provider {
@@ -75,11 +90,6 @@ h2.tagline {
 .provider .logo img {
   max-width: 100%;
   max-height: 100%;
-}
-
-a:hover {
-  color: inherit;
-  background-color: inherit;
 }
 
 .provider .logo.dark {
@@ -241,14 +251,11 @@ input.submit {
 
 div.message {
   margin-left: 200px;
-  margin-bottom: 9em;
+  margin-bottom: 4em;
 }
 
 div#content {
   margin-top: 3em;
-}
-
-div.nav {
 }
 
 #feedback {
@@ -271,7 +278,8 @@ div.nav {
 
 #footer {
   clear: left;
-  margin-top: 5em;
-  margin-left: 210px;
+  margin-top: 1em;
+  margin-bottom: 2em;
+  margin-left: 240px;
   font-size: .8em;
 }

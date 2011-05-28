@@ -1,0 +1,20 @@
+.provider
+  %a{:href => "/" + provider.slug, :class => "logo" + (provider.logo_is_dark ? ' dark' : '')}
+    %img{:src => provider.image}
+  .more
+    %a{:href => "/" + provider.slug}
+      %p{:class => 'name'}= provider.name
+      %p{:class => 'platforms'}
+        - provider.platforms.each do |pl|
+          - if pl.image
+            %img{:src => pl.image, :title => pl.name, :alt => pl.name}
+          - else
+            = pl.name
+      %p{:class => 'description'}= provider.description
+  .details
+    %p{:class => "countries"}
+      - provider.country.each do |pl|
+        %img{:src => pl.image, :title => pl.name || pl.code}
+    %p{:class => "ec2"}
+      - if provider.on_ec2
+        %img{:src => '/images/ec2.png'}

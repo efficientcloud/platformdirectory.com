@@ -1,0 +1,18 @@
+%h2.tagline Find modern Platform-as-a-Service cloud hosting providers:
+
+%form{:id => "searchform", :method => "post", :action => "/filter"}
+  %label{:for => 'platform'} What are you primarily developing on?
+  %input#selected_platform{:type => "hidden", :name => 'platform'}
+  %ul
+    - @platforms.each do |p|
+      %li.platform_choice{:id => 'platform_choice_' + p.slug, :onclick => "search_selected_platform('" + p.slug + "'); return false;"}
+        %a= p.name
+  %p
+    %label{:for => 'country'} Where are you?
+    = country_select :country, :name
+    %br
+    %small We'll highlight providers with servers/support from your country.
+  %input.submit{:type => "submit", :value => "Search"}
+  %span.complete_link
+    or
+    %a{:href => "/list"} view list

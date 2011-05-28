@@ -11,7 +11,7 @@
     <link rel="shortcut icon" href="/images/favicon.png" />
     <%= javascript_include_tag :defaults %>
   </head>
-  <body>
+  <body class="<%= body_classes %>">
     <header>
       <div class="meta">
         <h1><a href="/">Platform Directory</a></h1>
@@ -22,7 +22,6 @@
     <div id="content">
       <%= yield %>
     </div>
-
 
     <div id="feedback">
       <div style="position: absolute; right: -8px; top: -17px; width: 1em; height: 1em; border-radius: 5px; color: red; font-family: serif; font-style: italic; font-size: 3em;"><a style="color: inherit;" href="#" onclick="document.getElementById('feedback').style.display='none'; return false;"><img src="/images/close.png" /></a></div>
@@ -39,7 +38,7 @@
     </div>
 
     <div id="footer">
-      platformdirectory.com | managed by <a href="http://efficientcloud.com">efficientcloud</a> | contact: hello@platformdirectory.com
+      <a href="/about">About</a> | &copy; 2011 Efficient Cloud Ltd.
     </div>
 
 <script type="text/javascript">

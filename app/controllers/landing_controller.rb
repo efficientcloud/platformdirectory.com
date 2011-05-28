@@ -1,21 +1,13 @@
 class LandingController < ApplicationController
-  # GET /countries
-  # GET /countries.xml
-
   def index
     @platforms = Provider.find(:all, :include => [:platforms]).map{|x| x.platforms}.flatten.uniq
     @countries = Country.find :all
-
-    respond_to do |format|
-      format.html # index.html.erb
-    end
   end
 
   def filter
     if params[:platform].length==0
       params[:platform] = 'list'
     end
-    puts params.to_json
     redirect_to filteredlist_path(:platform => params[:platform]||'list', :country => country_name_to_code(params[:country][:name]).downcase)
   end
 
@@ -39,12 +31,6 @@ class LandingController < ApplicationController
       end
     else
       @platform = nil
-    end
-
-
-
-    respond_to do |format|
-      format.html {render 'list'}
     end
   end
 
