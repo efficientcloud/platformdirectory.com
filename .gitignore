@@ -6,3 +6,4 @@ public/images/providers/*
 .DS_Store
 PlatformDirectory.com Data Source.csv
 config/database.yml
+GeoIP.dat

@@ -2,6 +2,10 @@ class LandingController < ApplicationController
   def index
     @platforms = Provider.find(:all, :include => [:platforms]).map{|x| x.platforms}.flatten.uniq
     @countries = Country.find :all
+    
+    @client_country = GeoIP.new('GeoIP.dat').country(request.remote_ip).country_name rescue nil
+    @client_country = nil if @client_country == "N/A"
+    @client_country ||= "Germany"
   end
 
   def filter

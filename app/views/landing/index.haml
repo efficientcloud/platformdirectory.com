@@ -16,3 +16,14 @@
   %span.complete_link
     or
     %a{:href => "/list"} view list
+
+- if @client_country
+  :javascript
+    var options = $$('select#country_name option');
+    var len = options.length;
+    for (var i = 0; i < len; i++) {
+      if (options[i].value == "#{@client_country}") {
+        options[i].selected = true;
+        break;
+      }
+    }
