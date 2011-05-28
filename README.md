@@ -9,4 +9,6 @@ Install
 License
 -------
 
+Copyright (c) 2011 Efficient Cloud Ltd
+
 Code licensed under MIT license, dataset licensed under CC-BY-NC-SA.
