@@ -27,7 +27,7 @@ CSV::Reader.parse(File.open('PlatformDirectory.com Data Source.csv', 'rb'), ',')
 
   if provider.image.index('default') != nil and row[7]
     puts 'fetching logo'
-    logopath = row[8]
+    logopath = row[7]
     if logopath
       logoextension = logopath.last(3)
 
