@@ -4,3 +4,4 @@ log/*.log
 tmp/
 public/images/providers/*
 .DS_Store
+PlatformDirectory.com Data Source.csv
